@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [cpp]  # Cambiato da 'c' a 'cpp' per le tue query
+        language: [cpp]
     
     steps:
     - name: Checkout repository
@@ -31,7 +31,7 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        config-file: .github/codeql-config.yml
+        queries: security-extended,./.github/codeql/test.ql
     
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
