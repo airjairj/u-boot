@@ -1,4 +1,4 @@
-name: my-custom-queries
+name: custom/my-queries
 version: 0.0.1
 dependencies:
   codeql/cpp-queries: "*"
