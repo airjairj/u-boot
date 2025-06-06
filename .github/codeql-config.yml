@@ -2,7 +2,7 @@ name: "Custom CodeQL Config"
 
 packs:
   cpp:
-    - my-custom-queries
+    - custom/my-queries
 
 queries:
   - uses: security-extended
