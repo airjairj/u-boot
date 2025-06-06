@@ -31,7 +31,7 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        queries: .github/codeql  # Percorso corretto con punto iniziale
+        config-file: .github/codeql-config.yml
     
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
