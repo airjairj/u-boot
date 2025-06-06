@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [master]
   schedule:
-    - cron: '0 0 * * 0'  # Weekly (ogni domenica)
+    - cron: '0 0 * * 0'  # Weekly
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [c]
+        language: [cpp]  # Cambiato da 'c' a 'cpp' per le tue query
     
     steps:
     - name: Checkout repository
@@ -31,7 +31,7 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        packs: my-custom-queries
+        config-file: .github/codeql-config.yml
     
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
