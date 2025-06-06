@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [master]
   schedule:
-    - cron: '0 0 * * 0'  # Weekly
+    - cron: '0 0 * * 0'  # Weekly (ogni domenica)
   workflow_dispatch:
 
 jobs:
@@ -17,24 +17,24 @@ jobs:
       actions: read
       contents: read
       security-events: write
-
+    
     strategy:
       fail-fast: false
       matrix:
-        language: [c]  # o "c" se usi solo C
-
+        language: [c]
+    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
+    
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        queries: ./github/codeql
-
+        queries: .github/codeql  # Percorso corretto con punto iniziale
+    
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
-
+    
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
