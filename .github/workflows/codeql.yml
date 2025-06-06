@@ -7,6 +7,7 @@ on:
     branches: [main]
   schedule:
     - cron: '0 0 * * 0'  # Weekly
+    workflow_dispatch:  
 
 jobs:
   analyze:
@@ -30,7 +31,7 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        queries: ./github/test.ql
+        queries: ./github
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
